@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <script src="https://cdn.tailwindcss.com"></script>
      <link rel="stylesheet" href="index.css">
+     
+     <script src="index.js" defer></script>
     <title>PORTFOLIO</title>
 </head>
 <body>
@@ -32,7 +34,7 @@
  
     <div class="image-container">
       <div class="scrolling-text">
-        <p>Welcome to my portfolio where  make the complex simple.</p>
+        <p>Welcome to my portfolio where i make the complex simple.</p>
       </div>
       <img src="cartoon girl.jpg"  alt="Developer Photo" class="profile-photo" />
     </div>
@@ -96,7 +98,7 @@
       <div>
         <div class="flex justify-between mb-2">
           <span class="flex items-center gap-2">
-        <img src="tail_files/11009754.webp" alt="Tailwind CSS" class="w-10 h-6">
+        <img src="tail.jpg" alt="Tailwind CSS" class="w-10 h-6">
         Tailwind CSS
           </span>
           <span>80%</span>
@@ -122,7 +124,7 @@
       <div>
         <div class="flex justify-between mb-2">
           <span class="flex items-center gap-2">
-        <img src="boot" alt="Bootstrap" class="w-6 h-6">
+        <img src="boot.jpg" alt="Bootstrap" class="w-6 h-6">
         Bootstrap
           </span>
           <span>70%</span>
@@ -143,13 +145,71 @@
         <div class="w-full bg-white/30 rounded-full h-4">
           <div class="bg-black h-4 rounded-full w-[40%] transition-all duration-700"></div>
         </div>
-        <div class="soft">
-        <h1>softskills</h1>
-        <p>Teamwork and Collaboration</p>
-        <p>Effective Communication</p>
-        <p>Critical Thinking</p>
-        <p>Time Management</p>
-        <p>Problem Solving and Debugging.</p>
-        <p>Adaptabiliy and Continuous Learning.</p>
+       
+      <div class="softskills-section">
+  <h2 class="softskills-heading">softskills</h2>
+  <div class="softskills-list">
+    <p>Teamwork and Collaboration</p>
+    <p>Effective Communication</p>
+    <p>Critical Thinking</p>
+    <p>Time Management</p>
+    <p>Problem Solving and Debugging</p>
+    <p>Adaptability and Continuous Learning</p>
+  </div>
+</div>
+</section>
+
+
+  <section id="projects" class="projects-section">
+    <h2>My Projects</h2>
+    <div class="projects-container">
+
+      <div class="project-card">
+        <img src="images/weather-app.png" alt="Weather App" />
+        <h3>Weather App</h3>
+        <p>A simple weather app using JavaScript and a weather API.</p>
+        <div class="project-buttons">
+          <a href="https://yourusername.github.io/weather-app/" target="_blank">View Live</a>
+          <a href="https://github.com/yourusername/weather-app" target="_blank">View Code</a>
         </div>
       </div>
+
+      <div class="project-card">
+        <img src="images/todo-app.png" alt="Todo App" />
+        <h3>Todo List</h3>
+        <p>Task manager with local storage and a clean UI.</p>
+        <div class="project-buttons">
+          <a href="https://cheerful-genie-853183.netlify.app/" target="_blank">View Live</a>
+          <a href="https://github.com/yourusername/todo-app" target="_blank">View Code</a>
+        </div>
+      </div>
+
+      <!-- Add more cards below -->
+      
+    </div>
+  </section>
+
+
+
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <h2>Let's Connect</h2>
+    <p>I'd love to hear from you! Fill out the form below and I'll get back to you as soon as possible.</p>
+    
+    <form id="contactForm" class="contact-form">
+      <div class="input-group">
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email Address" required />
+      </div>
+      <textarea id="message" placeholder="Your Message..." required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div id="formFeedback" class="feedback"></div>
+  </div>
+</section>
+
+</body>
+</html>
