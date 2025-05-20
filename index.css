@@ -137,9 +137,10 @@ p{
   font-weight: 1000;
   font-size: 2.5em;
 }
-
-
-/* Contact Section */
+.letsconnect{
+  font-weight: 1000;
+  font-size: 2.5em;
+}
 .contact-section {
   background: #ffffff;
   padding: 4rem 2rem;
