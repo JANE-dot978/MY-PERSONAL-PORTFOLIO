@@ -1,4 +1,4 @@
-// contact.js
+
 document.getElementById('contactForm').addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -13,7 +13,7 @@ document.getElementById('contactForm').addEventListener('submit', function (e) {
     return;
   }
 
-  // Simulate sending message
+
   feedback.textContent = 'Sending...';
   feedback.style.color = 'black';
 
