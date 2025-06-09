@@ -1,4 +1,4 @@
-
+//this is for the contact form
 document.getElementById('contactForm').addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -23,3 +23,27 @@ document.getElementById('contactForm').addEventListener('submit', function (e) {
     document.getElementById('contactForm').reset();
   }, 1000);
 });
+
+//this is for the popout animation
+document.addEventListener('DOMContentLoaded', () => {
+  const popouts = document.querySelectorAll('.popout');
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.2, // Trigger when 20% of the element is visible
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        // Optionally unobserve after animation to improve performance
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  popouts.forEach(el => observer.observe(el));
+});
+

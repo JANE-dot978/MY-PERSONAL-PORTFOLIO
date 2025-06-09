@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,7 @@
      <script src="index.js" defer></script>
     <title>PORTFOLIO</title>
 </head>
-<!-- <body class="min-h-screen flex flex-col justify-between"> -->
+<body class="min-h-screen flex flex-col justify-between"> 
   <body class="min-h-screen flex flex-col">
     <main class="flex-grow">
   <div class="flex-1 flex flex-col">
@@ -18,21 +18,25 @@
             <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
                 <div class="hidden lg:flex lg:gap-x-12">
                   <div class="absolute left-6 text-white">JANE</div>
-                    <a href="" class="text-xl/6 font-semibold text-gray-3000 text-white hover:text-blue-600" >Home</a>
+                    <a href="#home" class="text-xl/6 font-semibold text-gray-3000 text-white hover:text-blue-600" >Home</a>
                     <a href="#about" class="text-xl/6 font-semibold text-gray-3000  text-white hover:text-blue-600">About</a>
-                    <a href="" class="text-xl/6 font-semibold text-gray-3000  text-white hover:text-blue-600">Projects</a>
-                    <a href="" class="text-xl/6 font-semibold text-gray-3000  text-white hover:text-blue-600">Contact</a>
+                    <a href="#projects" class="text-xl/6 font-semibold text-gray-3000  text-white hover:text-blue-600">Projects</a>
+                    <a href="#contact" class="text-xl/6 font-semibold text-gray-3000  text-white hover:text-blue-600">Contact</a>
+                    <!-- <a href="#skills" class="text-xl/6 font-semibold text-gray-3000  text-white hover:text-blue-600">Skills</a> -->
                   </div>
     </header>
     </div>
     
-    <section class="hero-section">
+   <section id="home" class="hero-section pt-16 popout backdrop-blur-lg ">
   <div class="hero-content">
     <div class="text-content">
       <h1>I'm Jane Wanjiku</h1>
       <h2>Passionate Fullstack Developer</h2>
       <p>I turn ideas into interactive experiences and code into digital magic<br>lets build unforgettable.</p>
       <button class="button">let's get in touch</button>
+       
+
+
     </div>
  
     <div class="image-container">
@@ -43,7 +47,7 @@
     </div>
   </div>
 </section>
-<section class="backdrop-blur-lg bg-white/20 border border-white/30 shadow-1xl rounded-3xl w-full max-w-6xl p-16 text-black items-center mt-16 mx-auto flex flex-col ">
+<section id="about" class="popout backdrop-blur-lg bg-white/20 border border-white/30 shadow-1xl rounded-3xl w-full max-w-6xl p-16 text-black items-center mt-16 mx-auto flex flex-col">
         <h1 class="aboutme">About Me </h1><br>
 
       <h2 class="text-4xl font-semibold mb-6 tracking-wide text-center">
@@ -159,8 +163,10 @@
   </div>
 </div>
 </section>
+<br>
 
-<h1 class="myprojects">My Projects</h1>
+<h1 id="projects" class="popout backdrop-blur-lg bg-white/20 border border-white/30 shadow-1xl rounded-3xl w-full max-w-6xl p-16 text-black items-center mt-16 mx-auto flex flex-col myprojects">my projects</h1>
+
   
   <div class="card-container">
     <div class="project-card">
@@ -183,7 +189,7 @@
     </div>
 
     
-     <div class="project-card">
+     <div id="projects" class="project-card">
   <h3>QuickNote</h3>
   <p>A lightweight note-taking web app that lets users create, edit, and delete notes in real-time. Built with HTML, CSS, and vanilla JavaScript, it stores notes using browser local storage, ensuring data persists across sessions.</p>
   <div class="button-group">
@@ -209,8 +215,9 @@
       </div>
     </div>
   </div>
+
   <br><br>
-<section id="contact" class="contact-section">
+<section id="contact" class="popout backdrop-blur-lg bg-white/20 border border-white/30 shadow-1xl rounded-3xl w-full max-w-6xl p-16 text-black items-center mt-16 mx-auto flex flex-col contact-section">
   <div class="container">
     <h2 class="letsconnect">Let's Connect</h2>
     <p>I'd love to hear from you! Fill out the form below and I'll get back to you as soon as possible.</p>
@@ -230,10 +237,12 @@
   </div>
     </main>
   <br>
+  
+
 
  <!-- <footer class="fixed inset-x-0 bottom-0 bg-black text-center font-bold text-2xl text-white py-4 z-50"> -->
 
-<footer class="w-full bg-black text-white py-4">
+ <footer class="w-full bg-black text-white py-4 border-0 z-50">
   <div class="w-full px-6 flex flex-col md:flex-row items-center justify-between max-w-screen-xl mx-auto">
     <div class="text-center md:text-left mb-4 md:mb-0">
       <h3 class="text-lg font-semibold">© 2025 Jane Wanjiku</h3>
@@ -257,3 +266,4 @@
 </body>
 
 </html>
+
