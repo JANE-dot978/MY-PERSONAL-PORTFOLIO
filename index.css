@@ -1,11 +1,11 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: rgb(240, 242, 245); /* or #f9f9f9 or #f0f0f0 - pick one */
+  background-color: rgb(73, 118, 187); /* or #f9f9f9 or #f0f0f0 - pick one */
   color: black;
   padding: 40px;
   margin: 0;
 }
-.hero-section {
+/* .hero-section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,9 +32,9 @@ body {
 p{
     font-size: 1.5rem;
     font-family: Raleway Dots;
-}
+} */
 
-.image-container {
+/* .image-container {
   position: relative;
   width: 600px;
   border-radius: 20px;
@@ -66,8 +66,8 @@ p{
   border-radius: 15px;
   border: 4px solid white;
   margin: 20px;
-}
-.button{
+} */
+/* .button{
   margin: 20px;
   background-color: black;
   color: white;
@@ -86,7 +86,177 @@ p{
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+} */
+
+/* Make the section fill the screen */
+.hero-section {
+  min-height: 100vh;
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9fafb; /* Light background for contrast */
 }
+
+/* Flex layout for content */
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+/* Ensure text stays on one side and doesn't overflow */
+.text-content {
+  flex: 1;
+  min-width: 300px;
+  max-width: 50%;
+  overflow: hidden;
+}
+
+/* Image settings */
+.image-wrapper {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 0.75rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Typing animations (keep from before) */
+.typing-animation {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid black;
+  width: 0ch;
+  animation: typing-line1 2.5s steps(20, end) forwards;
+}
+p{
+  font-size: 1.8rem;
+  font-family: Raleway Dots;
+}
+
+.typing-animation.delay {
+  animation: typing-line2 4s steps(22, end) forwards;
+  animation-delay: 3s;
+}
+
+@keyframes typing-line1 {
+  from { width: 0ch; }
+  to { width: 18ch; } /* "I'm Jane Wanjiku" */
+}
+
+@keyframes typing-line2 {
+  from { width: 0ch; }
+  to { width: 22ch; } /* "Passionate Fullstack Developer" */
+}
+
+/* Button styling */
+.hero-button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-button:hover {
+  background-color: #4338ca;
+  transform: scale(1.05);
+}
+
+/* Responsive fix */
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text-content, .image-wrapper {
+    max-width: 100%;
+  }
+
+  .hero-image {
+    max-width: 90%;
+  }
+
+  .typing-animation {
+    font-size: 2rem;
+  }
+}
+
+
+
+.hero-button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-button:hover {
+  background-color: #4338ca;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text-content,
+  .image-wrapper {
+    max-width: 100%;
+  }
+
+  .hero-image {
+    max-width: 90%;
+  }
+
+  .typing-animation {
+    font-size: 2rem;
+  }
+}
+.typing-animation::after {
+  content: '|';
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+ 
+
 .myskills{
   font-weight: 1000;
   font-size: 2.5em;
