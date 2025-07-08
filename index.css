@@ -26,9 +26,8 @@ body {
 
 /* Make the section fill the screen */
 .hero-section {
-  min-height: 100vh;
-  margin-top: -3rem;
- 
+  margin-top: 2rem;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,7 +107,7 @@ p{
 .hero-button {
   margin-top: 1.9rem;
   padding: 0.75rem 1.5rem;
-  background-color: #4f46e5; /* Indigo */
+  background-color: #0c70eb; /* Indigo */
   color: #ffffff;
   border: none;
   border-radius: 0.5rem;
@@ -122,7 +121,7 @@ p{
 }
 
 .hero-button:hover {
-  background-color: #4338ca; /* Darker indigo */
+  background-color: #252150; /* Darker indigo */
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
@@ -137,30 +136,7 @@ p{
   outline-offset: 2px;
 }
 
-/* Responsive fix */
-@media (max-width: 768px) {
-  .content-wrapper {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .text-content, .image-wrapper {
-    max-width: 100%;
-  }
-
-  .hero-image {
-    max-width: 90%;
-  }
-
-  .typing-animation {
-    font-size: 2rem;
-  }
-}
-/* 
-
-
-.
-/* Responsive Design */
+/* ✅ General Responsive Fix */
 @media (max-width: 768px) {
   .content-wrapper {
     flex-direction: column;
@@ -180,6 +156,8 @@ p{
     font-size: 2rem;
   }
 }
+
+/* ✅ Typing Cursor Blink */
 .typing-animation::after {
   content: '|';
   animation: blink 1s infinite;
@@ -188,8 +166,49 @@ p{
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
-} */
+}
 
+/* Responsive - Mobile (0 - 768px) */
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text-content,
+  .image-wrapper {
+    max-width: 100%;
+  }
+
+  .hero-image {
+    max-width: 90%;
+  }
+
+  .typing-animation {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.6rem;
+  }
+}
+
+/* Extra Small Phones (<=480px) */
+@media (max-width: 480px) {
+  .typing-animation {
+    font-size: 1.5rem;
+    
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .hero-button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
 
  
 
@@ -201,8 +220,6 @@ p{
   font-weight: 1000;
   font-size: 2.5rem;
  }
-
-
 .aboutme{
    font-weight: 1000;
   font-size: 2.5em;

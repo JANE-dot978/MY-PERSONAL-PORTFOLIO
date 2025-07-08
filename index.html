@@ -14,45 +14,52 @@
     <main class="flex-grow">
   <div class="flex-1 flex flex-col">
     <div>
-         <header class="fixed inset-x-0 top-0 z-50 justify-items-center font-bold font-size: var(--text-5xl); bg-black space-x-0" >
-            <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-                <div class="hidden lg:flex lg:gap-x-12">
-                  <div class="absolute left-6 text-white">JANE</div>
-                    <a href="#home" class="text-xl/6 font-semibold text-gray-3000 text-white hover:text-blue-600" >Home</a>
-                    <a href="#about" class="text-xl/6 font-semibold text-gray-3000  text-white hover:text-blue-600">About</a>
-                    <a href="#projects" class="text-xl/6 font-semibold text-gray-3000  text-white hover:text-blue-600">Projects</a>
-                    <a href="#contact" class="text-xl/6 font-semibold text-gray-3000  text-white hover:text-blue-600">Contact</a>
-                  
-                  </div>
-    </header>
-    </div>
-    <section id="home" class="hero-section">
+       
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black text-white">
+  <nav class="flex items-center justify-between px-4 py-4 lg:px-8 max-w-screen-xl mx-auto">
+
+    
+    <!-- Logo -->
+    <div class="text-2xl font-bold">JANE</div>
+
+    <!-- Hamburger Button (mobile only) -->
+    <button id="menu-toggle" class="lg:hidden text-white text-3xl focus:outline-none">
+      ☰
+    </button>
+
+    <!-- All Nav Links (same set for all screens) -->
+    <ul id="nav-menu" class="hidden flex-col space-y-4 lg:flex lg:flex-row lg:space-y-0 lg:space-x-8 text-lg font-semibold">
+      <li><a href="#home" class="hover:text-blue-600 block">Home</a></li>
+      <li><a href="#about" class="hover:text-blue-600 block">About</a></li>
+      <li><a href="#projects" class="hover:text-blue-600 block">Projects</a></li>
+      <li><a href="#contact" class="hover:text-blue-600 block">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+   
+<!-- <section id="home" class="hero-section"> -->
+  <section id="home" class="hero-section pt-0 lg:pt-24">
   <div class="hero-content">
     <div class="content-wrapper">
       <div class="text-content">
         <h1 class="typing-animation">I'm Jane Wanjiku</h1>
-        <h2 class="typing-animation delay"> Fullstack Developer</h2>
+        <h2 class="typing-animation delay">Fullstack Developer</h2><br>
         <p>I turn ideas into interactive experiences and code into digital magic.<br>Let's build unforgettable digital experiences.</p>
-       <button></button> <a href="#contact" class="hero-button">Let's Get In Touch</a></button>
-
+        <a href="#contact" class="hero-button">Let's Get In Touch</a>
       </div>
       <div class="image-wrapper">
-        <img src="gif coding.gif" alt="Coding GIF" class="hero-image">
+        <img src="gif coding.gif" alt="Coding GIF" class="hero-image" />
       </div>
     </div>
   </div>
 </section>
 
-    
-   
 <section id="about" class="popout backdrop-blur-lg bg-white/20 border border-white/30 shadow-1xl rounded-3xl w-full max-w-6xl p-16 text-black items-center mt-16 mx-auto flex flex-col">
         <h1 class="aboutme">About Me </h1><br>
-       
-
       <h2 class="text-4xl font-semibold mb-6 tracking-wide text-center">
       The Mind Behind the Code 👨‍💻
       </h2>
-
       <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-10 w-full max-w-5xl">
   <div class="w-full md:w-1/2 flex justify-center">
     <img src="gif.gif" alt="Developer gif" class="max-w-full h-auto rounded-xl shadow-lg">
@@ -63,9 +70,6 @@
     I also enjoy collaborating with others and sharing knowledge to create impactful projects.
   </p>
 </div>
-
-      
-     
       <h1 class="skills">My Skills 💻</h1>
       <br>
       <div class="grid md:grid-cols-2 gap-12 w-full">
@@ -266,6 +270,8 @@
       <h3 class="text-lg font-semibold">© 2025 Jane Wanjiku</h3>
       <p class="text-sm text-gray-400">All rights reserved.</p>
     </div>
+    <div><a href="/Jane Wanjiku Gathu_CV.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+</div>
     <div class="flex space-x-6 text-xl">
       <a href="https://github.com/JANE-dot978" target="_blank" class="hover:text-gray-400">
         <img src="githubbb.ico" alt="GitHub" class="w-6 h-6">
