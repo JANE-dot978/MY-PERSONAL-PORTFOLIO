@@ -5,7 +5,7 @@
 
   toggleBtn.addEventListener('click', () => {
     navMenu.classList.toggle('hidden');
-    navMenu.classList.toggle('flex');
+    // navMenu.classList.toggle('flex');
   });
 
 

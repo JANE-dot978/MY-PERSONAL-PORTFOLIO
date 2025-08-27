@@ -4,7 +4,7 @@
    /* color: black;
   padding: 40px;
   margin: 0; */
-}  */
+ */
 
 body {
       background: linear-gradient(-45deg, #eae6e6, #473d3a, #816078, #8b7cae);
@@ -17,6 +17,44 @@ body {
       color: white;
       font-size: 2rem;
     }
+    /* ===== NAVBAR RESPONSIVENESS ===== */
+
+@media screen and (max-width: 1024px) {
+  nav {
+    flex-wrap: wrap;
+  }
+
+  #nav-menu {
+    width: 100%;
+    background-color: black;
+    padding: 1rem 0;
+    text-align: center;
+  }
+
+  #nav-menu li {
+    padding: 0.5rem 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #nav-menu {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #nav-menu li a {
+    font-size: 1rem;
+  }
+
+  .text-2xl {
+    font-size: 1.5rem;
+  }
+
+  #menu-toggle {
+    font-size: 2rem;
+  }
+}
+
 
     /* @keyframes gradientBG {
       0% { background-position: 0% 50%; }
@@ -107,7 +145,7 @@ p{
 .hero-button {
   margin-top: 1.9rem;
   padding: 0.75rem 1.5rem;
-  background-color: #0c70eb; /* Indigo */
+  background-color: #06739a; /* Indigo */
   color: #ffffff;
   border: none;
   border-radius: 0.5rem;
@@ -137,7 +175,7 @@ p{
 }
 
 /* ✅ General Responsive Fix */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .content-wrapper {
     flex-direction: column;
     text-align: center;
@@ -155,7 +193,7 @@ p{
   .typing-animation {
     font-size: 2rem;
   }
-}
+} */
 
 /* ✅ Typing Cursor Blink */
 .typing-animation::after {
@@ -169,7 +207,7 @@ p{
 }
 
 /* Responsive - Mobile (0 - 768px) */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .content-wrapper {
     flex-direction: column;
     text-align: center;
@@ -191,10 +229,10 @@ p{
   p {
     font-size: 1.6rem;
   }
-}
+} */
 
 /* Extra Small Phones (<=480px) */
-@media (max-width: 480px) {
+/* @media (max-width: 480px) { 
   .typing-animation {
     font-size: 1.5rem;
     
@@ -208,7 +246,74 @@ p{
     font-size: 0.9rem;
     padding: 0.6rem 1.2rem;
   }
+} */
+
+/* ===== RESPONSIVENESS FOR HERO SECTION ===== */
+
+@media screen and (max-width: 1024px) {
+  .typing-animation {
+    font-size: 2rem;
+  }
+
+  .text-content p {
+    font-size: 1.3rem;
+  }
+
+  .hero-image {
+    max-width: 400px;
+  }
 }
+
+@media screen and (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column-reverse; /* Image below text on small screens */
+    text-align: center;
+  }
+
+  .text-content,
+  .image-wrapper {
+    max-width: 100%;
+  }
+
+  .typing-animation {
+    font-size: 1.8rem;
+  }
+
+  .text-content p {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+
+  .hero-button {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .hero-image {
+    max-width: 350px;
+    margin-top: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .typing-animation {
+    font-size: 1.5rem;
+  }
+
+  .text-content p {
+    font-size: 1rem;
+  }
+
+  .hero-image {
+    max-width: 280px;
+  }
+
+  .hero-button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
 
  
 
@@ -438,6 +543,10 @@ p{
   opacity: 1;
   transform: scale(1);
 }
+
+
+
+
 
 
 
