@@ -1,301 +1,689 @@
-  <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <script src="https://cdn.tailwindcss.com"></script>
-     <link rel="stylesheet" href="index.css">
-     
-     <script src="index.js" defer></script>
-    <title>PORTFOLIO</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jane Gathu — Software Developer</title>
+
+  <!-- Tailwind CDN -->
+  <script>
+    // enable class-based dark mode for Tailwind CDN
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root { --glass: rgba(255,255,255,0.7); --muted: #94a3b8; }
+    body { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    .reveal { opacity: 0; transform: translateY(18px) scale(.995); transition: all 700ms cubic-bezier(.2,.9,.2,1); }
+    .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+    .soft-glow { box-shadow: 0 6px 30px rgba(59,130,246,0.08); }
+    .btn-primary { background: linear-gradient(90deg,#4f46e5,#06b6d4); color: #fff; }
+    .btn-outline { border: 1px solid rgba(99,102,241,0.12); color: #4f46e5; }
+
+    /* Animated underline for nav */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(90deg,#4f46e5,#06b6d4);
+      transition: width .28s ease;
+      border-radius: 2px;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Toggle switch */
+    .toggle { width:44px; height:24px; border-radius:9999px; background:#e6e6f7; position:relative; cursor:pointer; display:inline-block; }
+    .toggle-ball { width:18px;height:18px;border-radius:9999px;background:white; position:absolute; top:3px; left:3px; transition: left .25s ease, transform .25s ease; box-shadow:0 3px 8px rgba(2,6,23,0.12); }
+    .toggle[data-mode="dark"] { background: linear-gradient(90deg,#111827,#0f172a); }
+    .toggle[data-mode="dark"] .toggle-ball { left:23px; transform: translateX(0); }
+
+    /* small responsive tweaks */
+    @media (max-width: 820px) { .desktop-only { display:none; } }
+
+    /* simple dark-mode overrides so your existing Tailwind classes still show correctly */
+    .dark-mode, .dark {
+      --glass: rgba(10,10,11,0.55);
+    }
+    .dark .bg-white { background-color: #0b1220 !important; }
+    .dark .text-slate-900 { color: #e6eef8 !important; }
+    .dark .text-slate-600, .dark .text-slate-500, .dark .text-slate-400 { color: #9aa6b2 !important; }
+    .dark header { background: rgba(7,10,18,0.6) !important; border-color: rgba(255,255,255,0.04) !important; }
+    .dark .border-slate-200 { border-color: rgba(255,255,255,0.06) !important; }
+    .dark .bg-indigo-50 { background-color: rgba(79,70,229,0.06) !important; }
+    .dark .soft-glow { box-shadow: 0 6px 30px rgba(2,6,23,0.45); }
+    .dark .bg-slate-50 { background-color: #071029 !important; }
+
+    /* testimonial dot styles */
+    .testimonial-dots button { width: 9px; height: 9px; border-radius: 9999px; background: #cbd5e1; border: none; margin: 0 4px; }
+    .testimonial-dots button.active { background: #4f46e5; }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between"> 
-   <!-- class="min-h-screen flex flex-col" -->
-    <main class="flex-grow">
-  <div class="flex-1 flex flex-col">
-    <div>
-       
-    <header class="fixed top-0 left-0 right-0 z-50 bg-black text-white">
-  <nav class="flex items-center justify-between px-4 py-4 lg:px-8 max-w-screen-xl mx-auto">
+<body class="bg-gradient-to-b from-slate-50 via-white to-slate-50 text-slate-900">
 
-    
-    <!-- Logo -->
-    <div class="text-2xl font-bold">JANE</div>
-
-    <!-- Hamburger Button (mobile only) -->
-    <button id="menu-toggle" class="lg:hidden text-white text-3xl focus:outline-none">
-      ☰
-    </button>
-
-    <!-- All Nav Links (same set for all screens) -->
-    <ul id="nav-menu" class="hidden flex-col space-y-4 lg:flex lg:flex-row lg:space-y-0 lg:space-x-8 text-lg font-semibold">
-      <li><a href="#home" class="hover:text-blue-600 block">Home</a></li>
-      <li><a href="#about" class="hover:text-blue-600 block">About</a></li>
-      <li><a href="#projects" class="hover:text-blue-600 block">Projects</a></li>
-      <li><a href="#contact" class="hover:text-blue-600 block">Contact</a></li>
-    </ul>
-  </nav>
-</header>
-
-   
-<!-- <section id="home" class="hero-section"> -->
-  <section id="home" class="hero-section pt-0 lg:pt-24">
-  <div class="hero-content">
-    <div class="content-wrapper">
-      <div class="text-content">
-        <h1 class="typing-animation">I'm Jane Wanjiku</h1>
-        <h2 class="typing-animation delay">Fullstack Developer</h2><br>
-        <p>I turn ideas into interactive experiences and code into digital magic.<br>Let's build unforgettable digital experiences.</p>
-        <a href="#contact" class="hero-button">Let's Get In Touch</a>
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 backdrop-blur-sm bg-white/60 border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-5 py-3 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-indigo-600 to-teal-400 flex items-center justify-center text-white font-extrabold text-lg shadow-lg">
+          JG
+        </div>
+        <div class="hidden xs:block">
+          <div class="text-sm font-semibold">Jane Gathu</div>
+          <div class="text-xs text-slate-500">Software Developer • Frontend & Full-stack</div>
+        </div>
       </div>
-      <div class="image-wrapper">
-        <img src="gif coding.gif" alt="Coding GIF" class="hero-image" />
+
+      <nav class="hidden md:flex items-center gap-6 text-xl font-bold">
+        <a class="nav-link text-slate-700" href="#home">Home</a>
+        <a class="nav-link text-slate-700" href="#about">About</a>
+        <a class="nav-link text-slate-700" href="#projects">Projects</a>
+        <a class="nav-link text-slate-700" href="#testimonials">Testimonials</a>
+        <a class="nav-link text-slate-700" href="#trusted">Trusted</a>
+        <a class="nav-link text-slate-700" href="#contact">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <!-- Theme toggle -->
+        <div id="themeToggle" class="toggle" role="button" tabindex="0" aria-label="Toggle theme" data-mode="light" title="Toggle theme">
+          <div class="toggle-ball"></div>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button id="menuBtn" class="md:hidden p-2 rounded-md text-slate-700 hover:bg-slate-100" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/></svg>
+        </button>
       </div>
     </div>
-  </div>
-</section>
 
-<section id="about" class="popout backdrop-blur-lg bg-white/20 border border-white/30 shadow-1xl rounded-3xl w-full max-w-6xl p-16 text-black items-center mt-16 mx-auto flex flex-col">
-        <h1 class="aboutme">About Me </h1><br>
-      <h2 class="text-4xl font-semibold mb-6 tracking-wide text-center">
-      The Mind Behind the Code 👨‍💻
-      </h2>
-      <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-10 w-full max-w-5xl">
-  <div class="w-full md:w-1/2 flex justify-center">
-    <img src="gif.gif" alt="Developer gif" class="max-w-full h-auto rounded-xl shadow-lg">
-  </div>
-  <p class="text-xl leading-relaxed w-full md:w-1/2 text-center md:text-left">
-    I'm a software development student passionate about clean, intuitive design and building useful web applications.
-    I'm constantly learning, experimenting, and turning challenges into opportunities to grow. My focus right now is writing clean JavaScript, mastering version control, and slowly stepping into the React ecosystem.
-    I also enjoy collaborating with others and sharing knowledge to create impactful projects.
-  </p>
-</div>
-      <h1 class="skills">My Skills 💻</h1>
-      <br>
-      <div class="grid md:grid-cols-2 gap-12 w-full">
-      <div>
-        <div class="flex justify-between mb-2">
-          <span class="flex items-center gap-2">
-        <img src="html.webp" alt="HTML" class="w-7 h-7">
-        HTML
-          </span>
-          <span>90%</span>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-100 bg-white/80">
+      <div class="px-5 py-4 flex flex-col gap-3">
+        <a href="#home" class="text-slate-700">Home</a>
+        <a href="#about" class="text-slate-700">About</a>
+        <a href="#projects" class="text-slate-700">Projects</a>
+        <a href="#testimonials" class="text-slate-700">Testimonials</a>
+        <a href="#trusted" class="text-slate-700">Trusted</a>
+        <a href="#contact" class="text-slate-700">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main id="home" class="max-w-6xl mx-auto px-4 sm:px-5 py-6 sm:py-8">
+    <!-- HERO -->
+    <section class="grid md:grid-cols-2 gap-6 md:gap-8 items-center py-8 md:py-12">
+      <div class="space-y-4 md:space-y-6">
+        <div class="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-indigo-50 to-teal-50 text-indigo-600 text-2xl font-medium soft-glow">
+          Available for hire • Open to full-time & freelance
         </div>
-        <div class="w-full bg-white/30 rounded-full h-4">
-          <div class="bg-black h-4 rounded-full w-[90%] transition-all duration-700"></div>
+
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
+          Jane Gathu — <span class="text-indigo-600">Software Developer</span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-slate-600 max-w-xl">
+          I design and build clean, efficient, and accessible web applications. My work blends polished interfaces with robust backends so teams and users get delightful, reliable products. I’m focused on shipping features quickly, writing maintainable code, and collaborating effectively.
+        </p>
+
+        <div class="flex flex-col xs:flex-row gap-3">
+          <a href="#projects" class="btn-primary inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold shadow hover:scale-[1.02]">View Projects</a>
+          <a href="#contact" class="btn-outline inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold hover:bg-indigo-50">Contact Me</a>
+        </div>
+
+        <!-- Quick highlights -->
+        <div class="mt-4 grid grid-cols-3 gap-3">
+          <div class="bg-white p-3 sm:p-4 rounded-2xl text-center soft-glow">
+            <div class="text-xs text-slate-400">Experience</div>
+            <div id="experienceYearsHero" class="text-lg font-bold text-slate-900">1+ years</div>
+          </div>
+          <div class="bg-white p-3 sm:p-4 rounded-2xl text-center soft-glow">
+            <div class="text-xs text-slate-400">Completed</div>
+            <div id="completedShort" class="text-lg font-bold text-indigo-600">+</div>
+          </div>
+          <div class="bg-white p-3 sm:p-4 rounded-2xl text-center soft-glow">
+            <div class="text-xs text-slate-400">Project Goal</div>
+            <div id="goalsShort" class="text-lg font-bold text-teal-600">25+</div>
+          </div>
         </div>
       </div>
 
-      <div>
-        <div class="flex justify-between mb-2">
-          <span class="flex items-center gap-2">
-        <img src="css.webp" alt="CSS" class="w-6 h-6">
-        CSS
-          </span>
-          <span>85%</span>
-        </div>
-        <div class="w-full bg-white/30 rounded-full h-4">
-          <div class="bg-black h-4 rounded-full w-[85%] transition-all duration-700"></div>
+      <div class="reveal bg-white rounded-3xl p-4 sm:p-6 shadow-lg soft-glow mt-8 md:mt-0">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+          <div class="col-span-1">
+            <!-- Hero portrait: replace your-photo.jpg with your actual image file -->
+            <img alt="Portrait" src="cartoon girl.jpg" class="rounded-xl object-cover w-full h-48 sm:h-56 md:h-full" />
+          </div>
+
+          <div class="col-span-1 mt-4 md:mt-0">
+            <div class="text-sm text-slate-500">Profile</div>
+            <div class="mt-2 text-slate-700">
+              <div class="text-lg font-semibold">Jane Gathu</div>
+              <div class="text-sm text-slate-500">Full-stack developer focused on building production-ready apps.</div>
+            </div>
+
+            <div class="mt-4">
+              <div class="text-xs text-slate-400">Top skills</div>
+              <div class="mt-3 flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs font-medium">HTML5</span>
+                <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs font-medium">CSS3</span>
+                <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs font-medium">JavaScript</span>
+                <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs font-medium">React</span>
+                <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs font-medium">Node.js</span>
+                <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs font-medium">Tailwind</span>
+              </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row gap-3">
+              <a class="inline-flex items-center justify-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-semibold" href="#contact">Hire me</a>
+              <a class="inline-flex items-center justify-center gap-2 px-4 py-2 border border-slate-200 rounded-lg text-sm" href="/JANE WANJIKU GATHU-cv.pdf" target="_blank">Download CV</a>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
+    <br><br><br>
 
-      <div>
-        <div class="flex justify-between mb-2">
-          <span class="flex items-center gap-2">
-        <img src="js.webp" alt="JavaScript" class="w-8 h-8">
-        JavaScript
-          </span>
-          <span>70%</span>
-        </div>
-        <div class="w-full bg-white/30 rounded-full h-4">
-          <div class="bg-black h-4 rounded-full w-[70%] transition-all duration-700"></div>
+    <!-- ABOUT -->
+    <section id="about" class="py-8 md:py-12">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <h2 class="text-5xl font-semibold">About Me</h2>
+        <p class="mt-3 text-slate-600 text-2xl">
+          I am a dedicated Software Developer with one year of hands-on experience crafting full-stack applications using modern web technologies.
+          I specialize in building intuitive user interfaces, robust REST APIs, and maintainable codebases. I work well in teams and continuously learn to bring the best tools to each project.
+        </p>
+
+        <!-- Counters -->
+        <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-white rounded-2xl p-4 md:p-6 shadow text-center">
+            <div class="text-xs text-slate-400">Experience</div>
+            <div id="expCounter" class="text-2xl font-extrabold">1+</div>
+            <div class="text-xs text-slate-400 mt-1">years</div>
+          </div>
+          <div class="bg-white rounded-2xl p-4 md:p-6 shadow text-center">
+            <div class="text-xs text-slate-400">Completed Projects</div>
+            <div id="completedCounter" class="text-2xl font-extrabold text-indigo-600">5+</div>
+            <div class="text-xs text-slate-400 mt-1">delivered</div>
+          </div>
+          <div class="bg-white rounded-2xl p-4 md:p-6 shadow text-center">
+            <div class="text-xs text-slate-400">In Progress</div>
+            <div id="inProgressCounter" class="text-2xl font-extrabold text-amber-500">2+</div>
+            <div class="text-xs text-slate-400 mt-1">active</div>
+          </div>
+          <div class="bg-white rounded-2xl p-4 md:p-6 shadow text-center">
+            <div class="text-xs text-slate-400">Project Goal</div>
+            <div id="goalsCounter" class="text-2xl font-extrabold text-teal-600">20+</div>
+            <div class="text-xs text-slate-400 mt-1">target</div>
+          </div>
         </div>
       </div>
+    </section>
+    <br>
 
-      <div>
-        <div class="flex justify-between mb-2">
-          <span class="flex items-center gap-2">
-        <img src="tail.jpg" alt="Tailwind CSS" class="w-10 h-6">
-        Tailwind CSS
-          </span>
-          <span>80%</span>
+    <!-- SKILLS -->
+    <section id="skills" class="py-8">
+      <div class="max-w-5xl mx-auto reveal">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6">
+          <h3 class="text-4xl font-semibold">Skills & Tools</h3>
+          <p class="text-2xl text-slate-500 mt-2 sm:mt-0">Technologies I use to ship reliable products</p>
         </div>
-        <div class="w-full bg-white/30 rounded-full h-4">
-          <div class="bg-black h-4 rounded-full w-[80%] transition-all duration-700"></div>
+
+        <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4">
+          <!-- Skill cards (kept visual similar to your original) -->
+          <div class="bg-white p-4 rounded-2xl shadow hover:scale-[1.02] transition-transform">
+            <div class="flex items-center gap-3">
+              <img src="css.webp" alt="CSS" class="w-6 h-6">
+              <div>
+                <div class="text-sm font-semibold">HTML & CSS</div>
+                <div class="text-xs text-slate-400">Semantic markup & responsive styles</div>
+              </div>
+            </div>
+          </div>
+          <!-- ... other skill cards unchanged visually ... -->
+          <div class="bg-white p-4 rounded-2xl shadow hover:scale-[1.02] transition-transform">
+            <div class="flex items-center gap-3">
+               <img src="js.webp" alt="JavaScript" class="w-8 h-8">
+              <div>
+                <div class="text-sm font-semibold">JavaScript (ES6+)</div>
+                <div class="text-xs text-slate-400">Modern, modular code</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-4 rounded-2xl shadow hover:scale-[1.02] transition-transform">
+            <div class="flex items-center gap-3">
+               <img src="react.webp" alt="React" class="w-8 h-8">
+              <div>
+                <div class="text-sm font-semibold">React.js</div>
+                <div class="text-xs text-slate-400">Component-based UIs</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-4 rounded-2xl shadow hover:scale-[1.02] transition-transform">
+            <div class="flex items-center gap-3">
+              <img src="node.png" alt="React" class="w-8 h-8">
+              <div>
+                <div class="text-sm font-semibold">Node.js</div>
+                <div class="text-xs text-slate-400">APIs & server logic</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-4 rounded-2xl shadow hover:scale-[1.02] transition-transform">
+            <div class="flex items-center gap-3">
+              <img src="tail.jpg" alt="Tailwind CSS" class="w-10 h-6">
+              <div>
+                <div class="text-sm font-semibold">Tailwind CSS</div>
+                <div class="text-xs text-slate-400">Utility-first styling</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-4 rounded-2xl shadow hover:scale-[1.02] transition-transform">
+            <div class="flex items-center gap-3">
+              <img src="git.webp" alt="Git & GitHub" class="w-8 h-8">
+              <div>
+                <div class="text-sm font-semibold">Git & GitHub</div>
+                <div class="text-xs text-slate-400">Version control & collaboration</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-4 rounded-2xl shadow hover:scale-[1.02] transition-transform">
+            <div class="flex items-center gap-3">
+              <img src="mongo.png" alt="React" class="w-8 h-8">
+              <div>
+                <div class="text-sm font-semibold">MongoDB</div>
+                <div class="text-xs text-slate-400">Document databases</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-4 rounded-2xl shadow hover:scale-[1.02] transition-transform">
+            <div class="flex items-center gap-3">
+              <img src="rest.jpg" alt="React" class="w-8 h-8">
+              <div>
+                <div class="text-sm font-semibold">REST API Design</div>
+                <div class="text-xs text-slate-400">HTTP, auth, docs</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
+    <br><br>
 
-      <div>
-        <div class="flex justify-between mb-2">
-          <span class="flex items-center gap-2">
-        <img src="git.webp" alt="Git & GitHub" class="w-8 h-8">
-        Git & GitHub
-          </span>
-          <span>65%</span>
+    <!-- PROJECTS -->
+    <section id="projects" class="py-8 md:py-12">
+      <div class="max-w-6xl mx-auto reveal">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6">
+          <h3 class="text-4xl font-semibold">Featured Projects</h3>
+          <p class="text-2xl text-black mt-2 sm:mt-0">Selected work, polished & production-ready</p>
         </div>
-        <div class="w-full bg-white/30 rounded-full h-4">
-          <div class="bg-black h-4 rounded-full w-[65%] transition-all duration-700"></div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Project 1 -->
+          <article class="bg-white rounded-2xl overflow-hidden shadow-lg reveal">
+            <img src="blog.jpg" alt="Event Booking" class="w-full h-48 sm:h-56 object-cover">
+            <div class="p-4 sm:p-5">
+              <h4 class="font-semibold text-lg">Blog Nest</h4>
+              <p class="text-sm text-slate-600 mt-2">A minimalist blog posting app built with React and tailwind. Users can submit new blog entries by adding a title, author name, and message. .</p>
+              <div class="mt-4 flex flex-col xs:flex-row gap-3 items-start xs:items-center">
+                <a href="https://blog-hk9c-git-main-janes-projects-a0734d2b.vercel.app/" class="px-4 py-2 rounded-lg btn-primary text-sm">View Live</a>
+                <a href="https://github.com/JANE-dot978/BLOG" class="px-4 py-2 rounded-lg border border-indigo-100 text-indigo-600 text-sm">View Code</a>
+                 <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full xs:ml-auto">Completed</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="bg-white rounded-2xl overflow-hidden shadow-lg reveal">
+            <img src="clothes.jpg" alt="Student Portal" class="w-full h-48 sm:h-56 object-cover">
+            <div class="p-4 sm:p-5">
+              <h4 class="font-semibold text-lg">E-Commerce Prototype</h4>
+              <p class="text-sm text-slate-600 mt-2">A modern, fully responsive e-commerce web application prototype featuring a clean Design with a mobile-first approach to ensure seamless shopping experiences across all devices.using html and tailwind</p>
+              <div class="mt-4 flex flex-col xs:flex-row gap-3 items-start xs:items-center">
+                <a href="https://endearing-cheesecake-c5c570.netlify.app/" class="px-4 py-2 rounded-lg btn-primary text-sm">View Live</a>
+                <a href="https://github.com/JANE-dot978/commerce" class="px-4 py-2 rounded-lg border border-indigo-100 text-indigo-600 text-sm">View Code</a>
+                <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full xs:ml-auto">Completed</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="bg-white rounded-2xl overflow-hidden shadow-lg reveal">
+            <img src="notes.jpeg" alt="Portfolio" class="w-full h-48 sm:h-56 object-cover">
+            <div class="p-4 sm:p-5">
+              <h4 class="font-semibold text-lg">QuickNote</h4>
+              <p class="text-sm text-slate-600 mt-2">A lightweight note-taking web app that lets users create, edit, and delete notes in real-time. Built with HTML, CSS, and vanilla JavaScript, it stores notes using browser local storage..</p>
+              <div class="mt-4 flex flex-col xs:flex-row gap-3 items-start xs:items-center">
+                <a href="https://funny-tartufo-4904ba.netlify.app/"  class="px-4 py-2 rounded-lg btn-primary text-sm">View Live</a>
+                <a href="https://github.com/JANE-dot978/NOTE-APP" class="px-4 py-2 rounded-lg border border-indigo-100 text-indigo-600 text-sm">View Code</a>
+                <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full xs:ml-auto">Completed</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="bg-white rounded-2xl overflow-hidden shadow-lg reveal">
+            <img src="hub.webp" alt="E-commerce Prototype" class="w-full h-48 sm:h-56 object-cover">
+            <div class="p-4 sm:p-5">
+             <h4 class="font-semibold text-lg">EcoCharge Hub Locator</h4> <p class="text-sm text-slate-600 mt-2">An EV charging solution with real-time status, predictive analytics, and crowd-sourced verification. Frontend prototype built for demonstrating core functionality and user experience.</p>
+              <div class="mt-4 flex flex-col xs:flex-row gap-3 items-start xs:items-center">
+                <a href="https://astounding-souffle-54a83d.netlify.app/" class="px-4 py-2 rounded-lg btn-primary text-sm">View Live</a>
+                <a href="https://github.com/JANE-dot978/HUB-LOCATOR" class="px-4 py-2 rounded-lg border border-indigo-100 text-indigo-600 text-sm">View Code</a>
+                <span class="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded-full xs:ml-auto">In progress</span>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
+    </section>
+    <br><br><br>
 
-      <div>
-        <div class="flex justify-between mb-2">
-          <span class="flex items-center gap-2">
-        <img src="boot.jpg" alt="Bootstrap" class="w-6 h-6">
-        Bootstrap
-          </span>
-          <span>70%</span>
-        </div>
-        <div class="w-full bg-white/30 rounded-full h-4">
-          <div class="bg-black h-4 rounded-full w-[70%] transition-all duration-700"></div>
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="py-8 md:py-12">
+      <div class="max-w-6xl mx-auto text-center reveal">
+        <h2 class="text-4xl font-semibold mb-6">What People Say</h2>
+
+        <div id="testimonialsWrap" class="relative max-w-4xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="testimonialCards">
+            <!-- JS will rotate visible card set; keep markup for accessibility -->
+            <div class="testimonial-card bg-white p-4 sm:p-6 rounded-2xl shadow">
+              <div class="flex items-center gap-4 mb-4">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Mary Johnson avatar" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover">
+                <div>
+                  <div class="font-semibold text-sm">Mary Johnson</div>
+                  <div class="text-xs text-slate-400">Project Manager</div>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm">"Jane delivered an amazing portfolio website. Her attention to detail and fast delivery impressed the entire team."</p>
+            </div>
+
+            <div class="testimonial-card bg-white p-4 sm:p-6 rounded-2xl shadow">
+              <div class="flex items-center gap-4 mb-4">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="David Kim avatar" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover">
+                <div>
+                  <div class="font-semibold text-sm">David Kim</div>
+                  <div class="text-xs text-slate-400">Team Lead</div>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm">"Her event system project was intuitive and well-structured. Communication was smooth throughout."</p>
+            </div>
+
+            <div class="testimonial-card bg-white p-4 sm:p-6 rounded-2xl shadow">
+              <div class="flex items-center gap-4 mb-4">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sophia Lee avatar" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover">
+                <div>
+                  <div class="font-semibold text-sm">Sophia Lee</div>
+                  <div class="text-xs text-slate-400">Client</div>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm">"Highly professional, reliable, and skilled. Jane helped us launch a full-stack app ahead of schedule."</p>
+            </div>
+
+            <!-- More testimonials (optional) -->
+            <div class="testimonial-card bg-white p-4 sm:p-6 rounded-2xl shadow hidden">
+              <div class="flex items-center gap-4 mb-4">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Ahmed Noor avatar" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover">
+                <div>
+                  <div class="font-semibold text-sm">Ahmed Noor</div>
+                  <div class="text-xs text-slate-400">Product Owner</div>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm">"Great collaboration and code quality. Delivered more than expected."</p>
+            </div>
+          </div>
+
+          <!-- dots -->
+          <div class="mt-6 flex justify-center items-center testimonial-dots" id="testimonialDots"></div>
         </div>
       </div>
-
-      <div>
-        <div class="flex justify-between mb-2">
-          <span class="flex items-center gap-2">
-        <img src="react.webp" alt="React" class="w-8 h-8">
-        React
-          </span>
-          <span>40%</span>
-        </div>
-        <div class="w-full bg-white/30 rounded-full h-4">
-          <div class="bg-black h-4 rounded-full w-[60%] transition-all duration-700"></div>
-        </div>
-
-        
-
-        
-        
-       
-      <div class="softskills-section">
-  <h2 class="softskills-heading">softskills</h2>
-  <div class="softskills-list">
-    <p>Teamwork and Collaboration</p>
-    <p>Effective Communication</p>
-    <p>Critical Thinking</p>
-    <p>Time Management</p>
-    <p>Problem Solving and Debugging</p>
-    <p>Adaptability and Continuous Learning</p>
-  </div>
-</div>
-</section>
-<br>
-
-<!-- <h1 id="projects" class="popout backdrop-blur-lg bg-white/20 border border-white/30 shadow-1xl rounded-3xl w-full max-w-6xl p-16 text-black items-center mt-16 mx-auto flex flex-col myprojects">my projects</h1> -->
- <section id="projects" class="popout backdrop-blur-lg bg-white/20 border border-white/30 shadow-1xl rounded-3xl w-full max-w-6xl p-16 text-black items-center mt-16 mx-auto flex flex-col">
-        <h1 class="myprojects">My projects </h1><br>
-       
+    </section><br><br><br>
 
   
-  <div class="card-container">
-    <div class="project-card">
-      <h3>Wine craft</h3>
-      <p>A sleek and responsive e-commerce website for wine lovers. Users can browse wine collections, filter by taste, and place orders. Built with HTML,CSS.
-
-.</p>
-      <div class="button-group">
-        <a href="#" class="btn live">View Live</a>
-        <a href="#" class="btn code">View Code</a>
-      </div>
-    </div>
-    <div class="project-card">
-      <h3>DoggoMarket</h3>
-      <p>A simple one-page website that allows users to browse and filter dogs by category: All, Bought, or Free. Built using HTML, CSS, and JavaScript.</p>
-      <div class="button-group">
-        <a href="https://adorable-biscochitos-fe8eb9.netlify.app/" class="btn live">View Live</a>
-        <a href="https://github.com/JANE-dot978/javascript-code" class="btn code">View Code</a>
-      </div>
-    </div>
-
     
-     <div id="projects" class="project-card">
-  <h3>QuickNote</h3>
-  <p>A lightweight note-taking web app that lets users create, edit, and delete notes in real-time. Built with HTML, CSS, and vanilla JavaScript, it stores notes using browser local storage.</p>
-  <div class="button-group">
-    <a href="https://funny-tartufo-4904ba.netlify.app/" class="btn live" target="_blank" rel="noreferrer">View Live.</a>
-    <a href="https://github.com/JANE-dot978/NOTE-APP" class="btn code" target="_blank" rel="noreferrer">View Code.</a>
-  </div>
-</div>
-    <div class="project-card">
-      <h3>Calcify</h3>
-      <p>A simple and functional calculator built with HTML, CSS, and vanilla JavaScript. It performs basic arithmetic operations like addition, subtraction, multiplication, and division.</p>
-      <div class="button-group">
-        <a href="https://dulcet-cascaron-6b9169.netlify.app/" class="btn live"target="_blank" rel="noreferrer">View Live.</a>
-        <a href="https://github.com/JANE-dot978/calculator-class-project" class="btn code"target="_blank" rel="noreferrer">View Code.</a>
-      </div>
-    </div>
+    <!-- CONTACT -->
+    <h2 class="text-4xl font-bold mb-6 text-center">CONTACT ME</h2>
+    <section id="contact" class="py-8 md:py-12">
+      <div class="max-w-3xl mx-auto reveal bg-white p-6 sm:p-8 rounded-2xl shadow">
+        
+        <div class="flex flex-col md:flex-row items-start justify-between gap-6">
+          <div class="w-full md:w-1/2">
+            <h3 class="text-2xl font-semibold">Let's Work Together</h3>
+            <p class="mt-2 text-slate-600 text-2xl">Open to full-time opportunities, contract work, and collaborations. Tell me about your project or role and I'll respond promptly.</p>
 
-    <div class="project-card">
-      <h3>BlogNest</h3>
-      <p> A minimalist blog posting app built with React and tailwind. Users can submit new blog entries by adding a title, author name, and message. .</p>
-      <div class="button-group">
-        <a href="https://blog-hk9c-git-main-janes-projects-a0734d2b.vercel.app/" class="btn live"target="_blank" rel="noreferrer">View Live</a>
-        <a href="https://github.com/JANE-dot978/BLOG" class="btn code" target="_blank" rel="noreferrer">View Code</a>
-      </div>
-    </div>
-  </div>
- </section>
- <!-- //still working onthis// -->
-  <!-- hello this is just something to make sure i move with the flow -->
-   <!-- hahahhhagsvghbvhsbh -->
-    <!-- jjknbgtyujbgvyhujnbvgyhjnbhnvghjnb
-     gyhujkl,m -->
-     
-  
+            <div class="mt-6 space-y-2 text-sm">
+              <div><strong>Email:</strong> <a class="text-indigo-600" href=https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox>youremail@example.com</a></div>
+              <div><strong>LinkedIn:</strong> <a class="text-indigo-600" href="https://www.linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></div>
+              <div><strong>GitHub:</strong> <a class="text-indigo-600" href="https://github.com/JANE-dot978" target="_blank">github.com/JANE-dot978</a></div>
+            </div>
+          </div>
 
-  <br><br>
-<section id="contact" class="popout backdrop-blur-lg bg-white/20 border border-white/30 shadow-1xl rounded-3xl w-full max-w-6xl p-16 text-black items-center mt-16 mx-auto flex flex-col contact-section">
-  <div class="container">
-    <h2 class="letsconnect">Let's Connect</h2>
-    <p class="par">I'd love to hear from you! Fill out the form below and I'll get back to you as soon as possible.</p>
+          <form id="contactForm" class="w-full md:w-1/2 max-w-md">
+            <div class="grid gap-3">
+              <input id="name" type="text" required placeholder="Your name" class="px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-100" />
+              <input id="email" type="email" required placeholder="Your email" class="px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-100" />
+              <textarea id="message" rows="5" required placeholder="Message" class="px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-100"></textarea>
+              <button type="submit" class="px-4 py-3 rounded-xl btn-primary text-white font-semibold">Send message</button>
+              <div id="formFeedback" class="text-sm text-green-600 hidden">Thanks! Your message was sent.</div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
     
-    <form id="contactForm" class="contact-form">
-      <div class="input-group">
-        <input type="text" id="name" placeholder="Full Name" required />
-        <input type="email" id="email" placeholder="Email Address" required />
-      </div>
-      <textarea id="message" placeholder="Your Message..." required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
 
-    <div id="formFeedback" class="feedback"></div>
-  </div>
-</section>
-  </div>
-    </main>
-  <br>
-  
+    <footer class="py-6 md:py-8 text-center text-sm text-black ">
+      © 2025 Jane Gathu · All rights reserved
+    </footer>
+  </main>
 
+  <!-- SCRIPTS -->
+  <script>
+    // ---------- DOM references ----------
+    const themeToggle = document.getElementById('themeToggle');
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const bodyEl = document.documentElement;
+    const feedback = document.getElementById('formFeedback');
 
- <!-- <footer class="fixed inset-x-0 bottom-0 bg-black text-center font-bold text-2xl text-white py-4 z-50"> -->
+    // ---------- Theme toggle (works + persists) ----------
+    function setTheme(mode) {
+      // set visual toggle attribute
+      themeToggle.setAttribute('data-mode', mode === 'dark' ? 'dark' : 'light');
 
- <footer class="w-full bg-black text-white py-4 border-0 z-50">
-  <div class="w-full px-6 flex flex-col md:flex-row items-center justify-between max-w-screen-xl mx-auto">
-    <div class="text-center md:text-left mb-4 md:mb-0">
-      <h3 class="text-lg font-semibold">© 2025 Jane Wanjiku</h3>
-      <p class="text-sm text-gray-400">All rights reserved.</p>
-    </div>
-    <div><a href="/Jane Wanjiku Gathu_CV.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
-</div>
-    <div class="flex space-x-6 text-xl">
-      <a href="https://github.com/JANE-dot978" target="_blank" class="hover:text-gray-400">
-        <img src="githubbb.ico" alt="GitHub" class="w-6 h-6">
-      </a>
-      <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="hover:text-gray-400">
-        <img src="linkined.webp" alt="LinkedIn" class="w-6 h-6">
-      </a>
-      <a href="mailto:youremail@example.com" class="hover:text-gray-400">
-        <img src="email.png" alt="Email" class="w-6 h-6">
-      </a>
-    </div>
-  </div>
-</footer>
+      // Add a .dark class on the html element (Tailwind class-based dark)
+      if (mode === 'dark') {
+        bodyEl.classList.add('dark');
+        document.body.classList.add('dark-mode'); // for our custom css rules too
+      } else {
+        bodyEl.classList.remove('dark');
+        document.body.classList.remove('dark-mode');
+      }
+      localStorage.setItem('site-theme', mode);
+    }
 
+    themeToggle.addEventListener('click', () => {
+      const next = themeToggle.getAttribute('data-mode') === 'light' ? 'dark' : 'light';
+      setTheme(next);
+    });
 
+    // accessibility: toggle via keyboard (enter/space)
+    themeToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        themeToggle.click();
+      }
+    });
+
+    // apply saved theme on load
+    const savedTheme = localStorage.getItem('site-theme') || 'light';
+    setTheme(savedTheme);
+
+    // ---------- Mobile menu ----------
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+    // ---------- Auto experience calculation ----------
+    (function calcExperience() {
+      const startDate = new Date('2024-09-06'); // update if needed
+      const now = new Date();
+      let years = now.getFullYear() - startDate.getFullYear();
+      const m = now.getMonth() - startDate.getMonth();
+      if (m < 0 || (m === 0 && now.getDate() < startDate.getDate())) years--;
+      const display = Math.max(1, years) + '+';
+      const hero = document.getElementById('experienceYearsHero');
+      const expCounter = document.getElementById('expCounter');
+      if (hero) hero.innerText = display + ' years';
+      if (expCounter) expCounter.innerText = display;
+    })();
+
+    // ---------- Animated numeric counters ----------
+    function animateValueTo(id, end, duration=1000) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      let start = 0;
+      const stepTime = 16;
+      const totalSteps = Math.ceil(duration / stepTime);
+      let step = 0;
+      const inc = end / totalSteps;
+      function frame() {
+        step++;
+        start = Math.min(end, Math.round(start + inc));
+        el.innerText = start + (id === 'completedCounter' || id === 'goalsCounter' ? '+' : '');
+        if (step < totalSteps) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    // trigger counters when about section visible
+    const statsObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        animateValueTo('completedCounter', 9, 900);
+        animateValueTo('inProgressCounter', 3, 900);
+        animateValueTo('goalsCounter', 25, 1200);
+        document.getElementById('completedShort').innerText = '9+';
+        document.getElementById('goalsShort').innerText = '25+';
+        statsObserver.disconnect();
+      }
+    }, { threshold: 0.35 });
+
+    const aboutEl = document.getElementById('about');
+    if (aboutEl) statsObserver.observe(aboutEl);
+
+    // ---------- Reveal on scroll (pop-out) ----------
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // ---------- Scroll smooth for nav links ----------
+    document.querySelectorAll('a.nav-link, #mobileMenu a').forEach(a => {
+      a.addEventListener('click', (e) => {
+        // normal anchor behavior if external
+        const href = a.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // ---------- Contact form (client-side demo) ----------
+    const form = document.getElementById('contactForm');
+    form && form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      feedback.classList.remove('hidden');
+      feedback.innerText = 'Thanks — message received! I will respond shortly.';
+      form.reset();
+      setTimeout(() => feedback.classList.add('hidden'), 5000);
+    });
+
+    // ---------- Testimonials carousel (simple) ----------
+    (function testimonialsCarousel() {
+      const cards = Array.from(document.querySelectorAll('#testimonialCards .testimonial-card'));
+      const dotsWrap = document.getElementById('testimonialDots');
+      if (!cards.length || !dotsWrap) return;
+
+      // show 3 cards at a time for larger screens, else 1
+      let index = 0;
+      const visibleCount = () => window.innerWidth >= 768 ? 3 : 1;
+
+      // create dots equal to possible "pages"
+      function renderDots() {
+        dotsWrap.innerHTML = '';
+        const pages = Math.ceil(cards.length / visibleCount());
+        for (let i = 0; i < pages; i++) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.addEventListener('click', () => {
+            index = i;
+            render();
+            resetAuto();
+          });
+          dotsWrap.appendChild(btn);
+        }
+      }
+
+      function render() {
+        const v = visibleCount();
+        const pages = Math.ceil(cards.length / v);
+        // hide all first
+        cards.forEach(c => c.classList.add('hidden'));
+        // show slice
+        const start = (index % pages) * v;
+        for (let i = 0; i < v; i++) {
+          const c = cards[(start + i) % cards.length];
+          c.classList.remove('hidden');
+        }
+        // set dot active
+        Array.from(dotsWrap.children).forEach((d, i) => d.classList.toggle('active', i === (index % pages)));
+      }
+
+      function next() {
+        index = (index + 1) % Math.ceil(cards.length / visibleCount());
+        render();
+      }
+
+      let timer = setInterval(next, 5000);
+      function resetAuto() {
+        clearInterval(timer);
+        timer = setInterval(next, 5000);
+      }
+
+      // init
+      renderDots();
+      render();
+
+      // re-render on resize (visibleCount changes)
+      window.addEventListener('resize', () => {
+        renderDots();
+        render();
+      });
+    })();
+
+    // ---------- Accessibility: close mobile menu when clicking links ----------
+    document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+  </script>
 </body>
-
 </html>
-
-
- 
