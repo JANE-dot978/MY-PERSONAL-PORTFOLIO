@@ -70,7 +70,7 @@
     .testimonial-dots button.active { background: #4f46e5; }
   </style>
 </head>
-<body class="bg-gradient-to-b from-slate-50 via-white to-slate-50 text-slate-900">
+<body class="bg-gradient-to-b from-slate-50 via-pink-100 to-slate-50 text-slate-900">
 
   <!-- NAV -->
   <header class="sticky top-0 z-50 backdrop-blur-sm bg-white/60 border-b border-slate-200">
@@ -187,7 +187,7 @@
 
             <div class="mt-6 flex flex-col sm:flex-row gap-3">
               <a class="inline-flex items-center justify-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-semibold" href="#contact">Hire me</a>
-              <a class="inline-flex items-center justify-center gap-2 px-4 py-2 border border-slate-200 rounded-lg text-sm" href="/JANE WANJIKU GATHU-cv.pdf" target="_blank">Download CV</a>
+              <a class="inline-flex items-center justify-center gap-2 px-4 py-2 border border-slate-200 rounded-lg text-sm" href="/JANE WANJIKU GATHU-cv.pdf"  target="_blank">Download CV</a>
             </div>
           </div>
         </div>
@@ -203,31 +203,29 @@
           I am a dedicated Software Developer with one year of hands-on experience crafting full-stack applications using modern web technologies.
           I specialize in building intuitive user interfaces, robust REST APIs, and maintainable codebases. I work well in teams and continuously learn to bring the best tools to each project.
         </p>
+        <br>
 
-        <!-- Counters -->
-        <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="bg-white rounded-2xl p-4 md:p-6 shadow text-center">
-            <div class="text-xs text-slate-400">Experience</div>
-            <div id="expCounter" class="text-2xl font-extrabold">1+</div>
-            <div class="text-xs text-slate-400 mt-1">years</div>
-          </div>
-          <div class="bg-white rounded-2xl p-4 md:p-6 shadow text-center">
-            <div class="text-xs text-slate-400">Completed Projects</div>
-            <div id="completedCounter" class="text-2xl font-extrabold text-indigo-600">5+</div>
-            <div class="text-xs text-slate-400 mt-1">delivered</div>
-          </div>
-          <div class="bg-white rounded-2xl p-4 md:p-6 shadow text-center">
-            <div class="text-xs text-slate-400">In Progress</div>
-            <div id="inProgressCounter" class="text-2xl font-extrabold text-amber-500">2+</div>
-            <div class="text-xs text-slate-400 mt-1">active</div>
-          </div>
-          <div class="bg-white rounded-2xl p-4 md:p-6 shadow text-center">
-            <div class="text-xs text-slate-400">Project Goal</div>
-            <div id="goalsCounter" class="text-2xl font-extrabold text-teal-600">20+</div>
-            <div class="text-xs text-slate-400 mt-1">target</div>
-          </div>
-        </div>
-      </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <!-- Twitter -->
+            <a href="#" class="flex flex-col items-center justify-center p-4 rounded-lg bg-white hover:bg-blue-100 transition-colors group">
+                <img src="insta.jpg" width="50" height="50">
+                <span class="text-sm text-gray-700">instagram</span>
+            </a>
+            
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/yourprofile" class="flex flex-col items-center justify-center p-4 rounded-lg bg-white hover:bg-blue-100 transition-colors group">
+                
+                <img src="linkined.webp" width="50" height="50">
+                <span class="text-sm text-gray-700">LinkedIn</span>
+            </a>
+            
+            <!-- GitHub -->
+            <a href="https://github.com/JANE-dot978" class="flex flex-col items-center justify-center p-4 rounded-lg bg-white hover:bg-gray-200 transition-colors group">
+                <img src="git.webp" width="50" height="50">
+                <span class="text-sm text-gray-700">GitHub</span>
+            </a>
+
+        
     </section>
     <br>
 
@@ -361,6 +359,7 @@
               </div>
             </div>
           </article>
+          
 
           <!-- Project 3 -->
           <article class="bg-white rounded-2xl overflow-hidden shadow-lg reveal">
@@ -472,7 +471,7 @@
             </div>
           </div>
 
-          <form id="contactForm" class="w-full md:w-1/2 max-w-md">
+          <form id="contactForm" class="w-full md:w-1/2 max-w-md" action="https://formspree.io/f/mblawqyj"method="POST">
             <div class="grid gap-3">
               <input id="name" type="text" required placeholder="Your name" class="px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-100" />
               <input id="email" type="email" required placeholder="Your email" class="px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-100" />
